@@ -1,4 +1,4 @@
-package org.danRtech.spaceshipdata.model;
+package org.danRtech.spaceshipdata.model.enums;
 
 public enum SpaceshipSize {
     Small,
