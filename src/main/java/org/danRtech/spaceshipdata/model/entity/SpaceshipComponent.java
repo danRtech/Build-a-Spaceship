@@ -1,6 +1,8 @@
-package org.danRtech.spaceshipdata.model;
+package org.danRtech.spaceshipdata.model.entity;
 
 import jakarta.persistence.*;
+import org.danRtech.spaceshipdata.model.enums.SpaceshipSize;
+import org.danRtech.spaceshipdata.model.enums.SpaceshipType;
 
 /**
  * Contains all attributes of a Spaceship Component

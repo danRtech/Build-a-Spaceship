@@ -1,4 +1,4 @@
-package org.danRtech.spaceshipdata.model;
+package org.danRtech.spaceshipdata.model.enums;
 
 /**
  * Enumeration of the spaceship type.
