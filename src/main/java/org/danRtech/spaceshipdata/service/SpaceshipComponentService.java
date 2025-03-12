@@ -9,6 +9,9 @@ import org.danRtech.spaceshipdata.repository.SpaceshipRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.List;
+
 @Service
 public class SpaceshipComponentService {
 
@@ -33,8 +36,16 @@ public class SpaceshipComponentService {
                 timeToBuild, features, keywords, spaceship, spaceshipType, spaceshipSize));
     }
 
+    public List<SpaceshipComponent> lookupBySpaceshipSize(SpaceshipSize spaceshipSize){
+        return spaceshipComponentRepo.findBySpaceshipSize(spaceshipSize);
+    }
+
+    public List<SpaceshipComponent> lookupBySpaceshipCode(String spaceshipCode){
+        return spaceshipComponentRepo.findBySpaceshipCode(spaceshipCode);
+    }
+
+
     public long countSpaceshipComponents(){
         return spaceshipComponentRepo.count();
     }
-
 }
