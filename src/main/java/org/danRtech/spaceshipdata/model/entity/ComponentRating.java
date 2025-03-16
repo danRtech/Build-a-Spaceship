@@ -1,9 +1,7 @@
 package org.danRtech.spaceshipdata.model.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
  * Represents a rating and review given to a specific spaceship component.
@@ -20,7 +18,7 @@ public class ComponentRating {
 
     @ManyToOne
     @JoinColumn(name = "component_id")
-    private SpaceshipComponent spaceshipComponent;
+    private SpaceshipComponent component;
 
     @Column(name = "pilot_id")
     private Integer pilotId;
@@ -36,13 +34,13 @@ public class ComponentRating {
 
     /**
      * Create fully initialised spaceship component rating
-     * @param spaceshipComponent
+     * @param component
      * @param pilotId
      * @param score
      * @param comment
      */
-    public ComponentRating(SpaceshipComponent spaceshipComponent, Integer pilotId, Integer score, String comment) {
-        this.spaceshipComponent = spaceshipComponent;
+    public ComponentRating(SpaceshipComponent component, Integer pilotId, Integer score, String comment) {
+        this.component = component;
         this.pilotId = pilotId;
         this.score = score;
         this.comment = comment;
@@ -50,12 +48,12 @@ public class ComponentRating {
 
     /**
      * Create a spaceship component rating (without comment)
-     * @param spaceshipComponent
+     * @param component
      * @param pilotId
      * @param score
      */
-    public ComponentRating(SpaceshipComponent spaceshipComponent, Integer pilotId, Integer score) {
-        this.spaceshipComponent = spaceshipComponent;
+    public ComponentRating(SpaceshipComponent component, Integer pilotId, Integer score) {
+        this.component = component;
         this.pilotId = pilotId;
         this.score = score;
     }

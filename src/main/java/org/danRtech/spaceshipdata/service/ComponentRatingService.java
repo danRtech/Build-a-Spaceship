@@ -7,7 +7,10 @@ import org.danRtech.spaceshipdata.repository.SpaceshipComponentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
+import java.util.OptionalDouble;
 
 @Service
 public class ComponentRatingService {
@@ -30,19 +33,124 @@ public class ComponentRatingService {
      * @return the new rating.
      */
     public ComponentRating createNew(int componentId, Integer pilotId, Integer score, String comment){
-        ComponentRating componentRating = new ComponentRating(verifyTour(componentId), pilotId, score, comment);
+        ComponentRating componentRating = new ComponentRating(verifyComponent(componentId), pilotId, score, comment);
         return componentRatingRepo.save(componentRating);
     }
 
     /**
-     * Verify and return the spaceship component given a spaceship component id.
+     * Get spaceship component rating by rating id.
+     *
+     * @param id rating identifier
+     * @return ComponentRating
+     */
+    public Optional<ComponentRating> lookupRatingById(int id) {
+        return componentRatingRepo.findById(id);
+    }
+
+    /**
+     * Get all ratings for all spaceship components.
+     *
+     * @return List of ComponentRatings
+     */
+    public List<ComponentRating> lookupAll() {
+        return componentRatingRepo.findAll();
+    }
+
+    /**
+     * Get a list of ratings for a spaceship component.
+     *
+     * @param componentId spaceship component identifier.
+     * @return List of ratings available for the spaceship component.
+     * @throws NoSuchElementException if no ratings found for the spaceship component.
+     */
+    public List<ComponentRating> lookupRatings(int componentId) throws NoSuchElementException {
+        return componentRatingRepo.findByComponentId(verifyComponent(componentId).getId());
+    }
+
+    /**
+     * Update all the elements of a component rating.
+     *
+     * @param componentId  component identifier.
+     * @param pilotId spaceship pilot identifier.
+     * @param score   score of the component rating.
+     * @param comment additional comment.
+     * @return component rating object.
+     * @throws NoSuchElementException if no component found.
+     */
+    public ComponentRating update(int componentId, Integer pilotId, Integer score, String comment)
+            throws NoSuchElementException {
+        ComponentRating rating = verifyComponentRating(componentId, pilotId);
+        rating.setScore(score);
+        rating.setComment(comment);
+        return componentRatingRepo.save(rating);
+    }
+
+    /**
+     * Update some of the elements of a component rating.
+     *
+     * @param componentId spaceship component identifier.
+     * @param pilotId spaceship pilot identifier.
+     * @param score score of the spaceship component rating.
+     * @param comment comment of the spaceship component rating.
+     * @return spaceship component rating object.
+     * @throws NoSuchElementException if no Tour found.
+     */
+    public ComponentRating updateSome(int componentId, Integer pilotId, Optional<Integer> score, Optional<String> comment)
+            throws NoSuchElementException {
+        ComponentRating rating = verifyComponentRating(componentId, pilotId);
+        score.ifPresent(s ->rating.setScore(s));
+        comment.ifPresent(c -> rating.setComment(c));
+        return componentRatingRepo.save(rating);
+    }
+
+    /**
+     * Delete a spaceship component rating.
+     *
+     * @param componentId spaceship component identifier.
+     * @param pilotId spaceship pilot identifier.
+     * @throws NoSuchElementException if no spaceship component found.
+     */
+    public void delete(int componentId, Integer pilotId) throws NoSuchElementException {
+        ComponentRating rating = verifyComponentRating(componentId, pilotId);
+        componentRatingRepo.delete(rating);
+    }
+
+    /**
+     * Get the average score of a spaceship component.
+     *
+     * @param componentId spaceship component identifier.
+     * @return average score as a Double.
+     * @throws NoSuchElementException if no component ratings found.
+     */
+    public Double getAverageScore(int componentId) throws NoSuchElementException {
+        List<ComponentRating> ratings = componentRatingRepo.findByComponentId(verifyComponent(componentId).getId());
+        OptionalDouble average = ratings.stream().mapToInt((rating) -> rating.getScore()).average();
+        return average.isPresent() ? average.getAsDouble() : null;
+    }
+
+    /**
+     * Verify and return the spaceship component for the given spaceship component id.
      *
      * @param spaceshipComponentId identification for the spaceship component.
      * @return the found spaceship component.
      * @throws NoSuchElementException if no spaceship component found.
      */
-    private SpaceshipComponent verifyTour(int spaceshipComponentId) throws NoSuchElementException {
+    private SpaceshipComponent verifyComponent(int spaceshipComponentId) throws NoSuchElementException {
         return spaceshipComponentRepo.findById(spaceshipComponentId)
                 .orElseThrow(() -> new NoSuchElementException("Spaceship component does not exist " + spaceshipComponentId));
+    }
+
+    /**
+     * Verify and return the component rating for a particular spaceship component and pilot
+     *
+     * @param componentId spaceship component identifier.
+     * @param pilotId spaceship pilot identifier.
+     * @return the found component rating.
+     * @throws NoSuchElementException if no component rating found.
+     */
+    public ComponentRating verifyComponentRating(int componentId, int pilotId) throws NoSuchElementException {
+        return componentRatingRepo.findByComponentIdAndPilotId(componentId, pilotId)
+                .orElseThrow(() -> new NoSuchElementException("Tour-Rating pair for request("
+                        + componentId + " for customer" + pilotId + ")"));
     }
 }
