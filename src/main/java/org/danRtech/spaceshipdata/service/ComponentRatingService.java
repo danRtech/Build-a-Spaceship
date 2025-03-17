@@ -63,7 +63,7 @@ public class ComponentRatingService {
      * @return List of ratings available for the spaceship component.
      * @throws NoSuchElementException if no ratings found for the spaceship component.
      */
-    public List<ComponentRating> lookupRatings(int componentId) throws NoSuchElementException {
+    public List<ComponentRating> lookupRatingsByComponent(int componentId) throws NoSuchElementException {
         return componentRatingRepo.findByComponentId(verifyComponent(componentId).getId());
     }
 
@@ -120,12 +120,26 @@ public class ComponentRatingService {
      *
      * @param componentId spaceship component identifier.
      * @return average score as a Double.
-     * @throws NoSuchElementException if no component ratings found.
+     * @throws NoSuchElementException if no ratings found for the component.
      */
     public Double getAverageScore(int componentId) throws NoSuchElementException {
         List<ComponentRating> ratings = componentRatingRepo.findByComponentId(verifyComponent(componentId).getId());
-        OptionalDouble average = ratings.stream().mapToInt((rating) -> rating.getScore()).average();
-        return average.isPresent() ? average.getAsDouble() : null;
+
+        if (ratings.isEmpty()) {
+            throw new NoSuchElementException("No ratings found for component ID: " + componentId);
+        }
+
+        int sum = 0;
+        for (ComponentRating rating : ratings) {
+            sum += rating.getScore();
+        }
+
+        return (double) sum / ratings.size();
+
+        // Alternatively can be done as below using Stream API:
+//        List<ComponentRating> ratings = componentRatingRepo.findByComponentId(verifyComponent(componentId).getId());
+//        OptionalDouble average = ratings.stream().mapToInt((rating) -> rating.getScore()).average();
+//        return average.isPresent() ? average.getAsDouble() : null;
     }
 
     /**
@@ -137,7 +151,7 @@ public class ComponentRatingService {
      */
     private SpaceshipComponent verifyComponent(int spaceshipComponentId) throws NoSuchElementException {
         return spaceshipComponentRepo.findById(spaceshipComponentId)
-                .orElseThrow(() -> new NoSuchElementException("Spaceship component does not exist " + spaceshipComponentId));
+                .orElseThrow(() -> new NoSuchElementException("Spaceship component: " + spaceshipComponentId + " does not exist!"));
     }
 
     /**
@@ -146,11 +160,11 @@ public class ComponentRatingService {
      * @param componentId spaceship component identifier.
      * @param pilotId spaceship pilot identifier.
      * @return the found component rating.
-     * @throws NoSuchElementException if no component rating found.
+     * @throws NoSuchElementException if unable to find the rating by component id and by pilot id.
      */
     public ComponentRating verifyComponentRating(int componentId, int pilotId) throws NoSuchElementException {
         return componentRatingRepo.findByComponentIdAndPilotId(componentId, pilotId)
-                .orElseThrow(() -> new NoSuchElementException("Tour-Rating pair for request("
-                        + componentId + " for customer" + pilotId + ")"));
+                .orElseThrow(() -> new NoSuchElementException("Rating does not exist for component Id: "
+                        + componentId + " and pilot id: " + pilotId));
     }
 }
