@@ -4,13 +4,17 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.danRtech.spaceshipdata.model.entity.ComponentRating;
 
 /**
  * Data transfer object for a Rating of a Spaceship Component.
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class RatingDto {
 
     @Min(0)
@@ -22,15 +26,6 @@ public class RatingDto {
 
     @NotNull
     private Integer pilotId;
-
-    public RatingDto() {
-    }
-
-    public RatingDto(Integer score, String comment, Integer pilotId) {
-        this.score = score;
-        this.comment = comment;
-        this.pilotId = pilotId;
-    }
 
     public RatingDto(ComponentRating entity) {
         this.score = entity.getScore();
