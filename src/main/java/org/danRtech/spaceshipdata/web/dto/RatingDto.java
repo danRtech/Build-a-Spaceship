@@ -13,8 +13,8 @@ import org.danRtech.spaceshipdata.model.entity.ComponentRating;
  * Data transfer object for a Rating of a Spaceship Component.
  */
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class RatingDto {
 
     @Min(0)
@@ -27,6 +27,10 @@ public class RatingDto {
     @NotNull
     private Integer pilotId;
 
+    /**
+     * This constructor converts ComponentRating entity into the RatingDto object
+     * @param entity ComponentRating entity
+     */
     public RatingDto(ComponentRating entity) {
         this.score = entity.getScore();
         this.comment = entity.getComment();
