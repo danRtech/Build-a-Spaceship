@@ -67,10 +67,4 @@ public class ComponentRatingController {
 
         return new RatingDto(componentRatingService.updateSome(componentId, ratingDto.getPilotId(), score, comment));
     }
-
-    @ExceptionHandler(NoSuchElementException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String return404(NoSuchElementException exception){
-        return exception.getMessage();
-    }
 }
