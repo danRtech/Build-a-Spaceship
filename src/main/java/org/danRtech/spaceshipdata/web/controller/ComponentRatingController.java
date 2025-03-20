@@ -67,4 +67,19 @@ public class ComponentRatingController {
 
         return new RatingDto(componentRatingService.updateSome(componentId, ratingDto.getPilotId(), score, comment));
     }
+
+    /**
+     * Group of pilots rates one spaceship component with the same score at once.
+     *
+     * @param componentId
+     * @param score
+     * @param pilots
+     */
+    @PostMapping("/batch")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void createManyRatingsForOneComponent(@PathVariable(value = "componentId") int componentId,
+                                      @RequestParam(value = "score") int score,
+                                      @RequestBody List<Integer> pilots) {
+        componentRatingService.rateMany(componentId, score, pilots);
+    }
 }

@@ -1,18 +1,18 @@
 package org.danRtech.spaceshipdata.service;
 
+import jakarta.validation.ConstraintViolationException;
 import org.danRtech.spaceshipdata.model.entity.ComponentRating;
 import org.danRtech.spaceshipdata.model.entity.SpaceshipComponent;
 import org.danRtech.spaceshipdata.repository.ComponentRatingRepo;
 import org.danRtech.spaceshipdata.repository.SpaceshipComponentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
-import java.util.OptionalDouble;
+import java.util.*;
 
 @Service
+@Transactional
 public class ComponentRatingService {
 
     private ComponentRatingRepo componentRatingRepo;
@@ -125,6 +125,7 @@ public class ComponentRatingService {
     public Double getAverageScore(int componentId) throws NoSuchElementException {
         List<ComponentRating> ratings = componentRatingRepo.findByComponentId(verifyComponent(componentId).getId());
 
+        // A traditional Java 7 approach:
         if (ratings.isEmpty()) {
             throw new NoSuchElementException("No ratings found for component ID: " + componentId);
         }
@@ -137,9 +138,28 @@ public class ComponentRatingService {
         return (double) sum / ratings.size();
 
         // Alternatively can be done as below using Stream API:
-//        List<ComponentRating> ratings = componentRatingRepo.findByComponentId(verifyComponent(componentId).getId());
-//        OptionalDouble average = ratings.stream().mapToInt((rating) -> rating.getScore()).average();
-//        return average.isPresent() ? average.getAsDouble() : null;
+        // OptionalDouble average = ratings.stream().mapToInt((rating) -> rating.getScore()).average();
+        // return average.isPresent() ? average.getAsDouble() : null;
+    }
+
+    /**
+     * A service that lets a group of pilots to rate one spaceship component with the same score at once
+     * (a less likely scenario in a real application, but good enough to demo the Transactional functionality).
+     *
+     * @param componentId identification for the spaceship component.
+     * @param score the rating score to be left by the group of pilots for the component.
+     * @param pilotIDs the list of IDs for the group of pilots.
+     */
+    public void rateMany(int componentId, int score, List<Integer> pilotIDs){
+        SpaceshipComponent component = verifyComponent(componentId);
+        for(Integer pilotID : pilotIDs){
+            if(componentRatingRepo.findByComponentIdAndPilotId(componentId, pilotID).isPresent()){
+                String message = "Unable to create duplicate ratings. The component with ID " + componentId
+                        + " is already rated by the pilot with ID " + pilotID + ".";
+                throw new ConstraintViolationException(message, Collections.emptySet());
+            }
+            componentRatingRepo.save(new ComponentRating(component, pilotID, score));
+        }
     }
 
     /**

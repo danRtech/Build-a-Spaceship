@@ -17,14 +17,14 @@ import org.danRtech.spaceshipdata.model.entity.ComponentRating;
 @AllArgsConstructor
 public class RatingDto {
 
-    @Min(0)
-    @Max(5)
+    @Min(value = 0, message = "The score cannot be below 0")
+    @Max(value = 5, message = "The score cannot be more than 5")
     private Integer score;
 
-    @Size(max = 255)
+    @Size(max = 255, message = "Comment cannot exceed 255 characters")
     private String comment;
 
-    @NotNull
+    @NotNull(message = "Pilot ID cannot be null")
     private Integer pilotId;
 
     /**
