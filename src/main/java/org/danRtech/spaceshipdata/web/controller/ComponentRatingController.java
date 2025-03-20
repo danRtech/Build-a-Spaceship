@@ -21,6 +21,11 @@ public class ComponentRatingController {
         this.componentRatingService = componentRatingService;
     }
 
+    /**
+     * Creates new rating for a component.
+     * @param componentId identification of the component the rating being created for.
+     * @param ratingDto the rating details returned as RatingDto object.
+     */
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void createComponentRating(
@@ -28,6 +33,12 @@ public class ComponentRatingController {
         componentRatingService.createNew(componentId,ratingDto.getPilotId(),ratingDto.getScore(), ratingDto.getComment());
     }
 
+    /**
+     * Returns all the ratings that were left for the spaceship component.
+     *
+     * @param componentId identification for the spaceship component.
+     * @return List of all ratings for the spaceship component as RatingDto objects.
+     */
     @GetMapping
     public List<RatingDto> getAllRatingsForSpaceshipComponent(@PathVariable(value = "componentId") int componentId){
         List<ComponentRating> componentRatings = componentRatingService.lookupRatingsByComponent(componentId);
@@ -39,11 +50,24 @@ public class ComponentRatingController {
         return ratingDtoList;
     }
 
+    /**
+     * Calculates and returns the average rating score for a spaceship component.
+     *
+     * @param componentId identification of the spaceship component.
+     * @return the average rating as ScoreDto object.
+     */
     @GetMapping("/average")
     public ScoreDto getAverage(@PathVariable(value = "componentId") int componentId){
        return new ScoreDto(componentRatingService.getAverageScore(componentId));
     }
 
+    /**
+     * Updates the spaceship component's rating.
+     *
+     * @param componentId identification of the spaceship component.
+     * @param ratingDto object that holds the rating details.
+     * @return updated rating details as RatingDto object.
+     */
     @PutMapping
     public RatingDto updataWithPut(@PathVariable(value = "componentId") int componentId,
                                    @RequestBody @Valid RatingDto ratingDto){
@@ -51,6 +75,12 @@ public class ComponentRatingController {
                 .update(componentId, ratingDto.getPilotId(), ratingDto.getScore(), ratingDto.getComment()));
     }
 
+    /**
+     * Deletes the rating that was left by the pilot for the spaceship component.
+     *
+     * @param componentId identification for the spaceship component.
+     * @param pilotId identification of the spaceship pilot that left the rating which is being deleted now.
+     */
     @DeleteMapping("/{pilotId}")
     @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable(value = "componentId") int componentId,
@@ -58,6 +88,13 @@ public class ComponentRatingController {
         componentRatingService.delete(componentId, pilotId);
     }
 
+    /**
+     * Update some details of the rating that exists on the spaceship component.
+     *
+     * @param componentId the component that is being rated.
+     * @param ratingDto the rating details to update.
+     * @return updated rating details as RatingDto.
+     */
     @PatchMapping
     public RatingDto updateWithPatch(@PathVariable(value = "componentId") int componentId,
                        @RequestBody @Valid RatingDto ratingDto){
@@ -69,11 +106,11 @@ public class ComponentRatingController {
     }
 
     /**
-     * Group of pilots rates one spaceship component with the same score at once.
+     * Multiple pilots rate one spaceship component with the same score at once.
      *
-     * @param componentId
-     * @param score
-     * @param pilots
+     * @param componentId the component that is being rated.
+     * @param score the rating score for the component.
+     * @param pilots the pilots that rated the component.
      */
     @PostMapping("/batch")
     @ResponseStatus(HttpStatus.CREATED)
