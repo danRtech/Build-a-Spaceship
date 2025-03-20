@@ -1,5 +1,6 @@
 package org.danRtech.spaceshipdata.web.controller_advise;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import java.util.NoSuchElementException;
 
+@Slf4j
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
@@ -19,7 +21,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
      */
     @ExceptionHandler(NoSuchElementException.class)
     public final ResponseEntity<Object> handleNoSuchElementException(NoSuchElementException exc, WebRequest request){
-
+        logException(exc);
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, exc.getMessage());
         return createResponseEntity(problemDetail, null, HttpStatus.NOT_FOUND, request);
     }
@@ -29,7 +31,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
      */
     @ExceptionHandler(ResourceNotFoundException.class)
     public final ResponseEntity<Object> handleResourceNotFoundException(ResourceNotFoundException exc, WebRequest request){
-
+        logException(exc);
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, exc.getMessage());
         return createResponseEntity(problemDetail, null, HttpStatus.NOT_FOUND, request);
     }
@@ -39,8 +41,17 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
      */
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<Object> handleUnexpectedException(Exception exc, WebRequest request){
-
+        logException(exc);
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.INTERNAL_SERVER_ERROR, exc.getMessage());
         return createResponseEntity(problemDetail, null, HttpStatus.INTERNAL_SERVER_ERROR, request);
+    }
+
+    /**
+     * Logs Stack Trace, error message and other exception details.
+     *
+     * @param exc Exception
+     */
+    private void logException(Exception exc){
+        log.error("Caught Exception", exc);
     }
 }
