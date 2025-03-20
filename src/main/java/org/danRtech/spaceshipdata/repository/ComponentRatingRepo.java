@@ -24,6 +24,4 @@ public interface ComponentRatingRepo extends JpaRepository<ComponentRating, Inte
      */
     Optional<ComponentRating> findByComponentIdAndPilotId(Integer componentId, Integer pilotId);
 
-
-
 }
