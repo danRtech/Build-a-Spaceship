@@ -1,6 +1,7 @@
 package org.danRtech.spaceshipdata.web.controller;
 
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.danRtech.spaceshipdata.model.entity.ComponentRating;
 import org.danRtech.spaceshipdata.service.ComponentRatingService;
 import org.danRtech.spaceshipdata.web.dto.RatingDto;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
+@Slf4j
 @RestController
 @RequestMapping(path = "/component/{componentId}/ratings")
 public class ComponentRatingController {
@@ -30,6 +32,7 @@ public class ComponentRatingController {
     @ResponseStatus(HttpStatus.CREATED)
     public void createComponentRating(
             @PathVariable (value = "componentId") int componentId, @RequestBody @Valid RatingDto ratingDto){
+        log.info("POST /components/{}/ratings", componentId);
         componentRatingService.createNew(componentId,ratingDto.getPilotId(),ratingDto.getScore(), ratingDto.getComment());
     }
 
@@ -40,10 +43,10 @@ public class ComponentRatingController {
      * @return List of all ratings for the spaceship component as RatingDto objects.
      */
     @GetMapping
-    public List<RatingDto> getAllRatingsForSpaceshipComponent(@PathVariable(value = "componentId") int componentId){
+    public List<RatingDto> getAllRatingsForComponent(@PathVariable(value = "componentId") int componentId){
+        log.info("GET /components/{}/ratings", componentId);
         List<ComponentRating> componentRatings = componentRatingService.lookupRatingsByComponent(componentId);
         List<RatingDto> ratingDtoList = new ArrayList<>();
-
         for (ComponentRating rating : componentRatings) {
             ratingDtoList.add(new RatingDto(rating));
         }
@@ -57,7 +60,8 @@ public class ComponentRatingController {
      * @return the average rating as ScoreDto object.
      */
     @GetMapping("/average")
-    public ScoreDto getAverage(@PathVariable(value = "componentId") int componentId){
+    public ScoreDto getAverageScore(@PathVariable(value = "componentId") int componentId){
+        log.info("GET /components/{}/ratings/average", componentId);
        return new ScoreDto(componentRatingService.getAverageScore(componentId));
     }
 
@@ -69,8 +73,9 @@ public class ComponentRatingController {
      * @return updated rating details as RatingDto object.
      */
     @PutMapping
-    public RatingDto updataWithPut(@PathVariable(value = "componentId") int componentId,
+    public RatingDto updateWithPut(@PathVariable(value = "componentId") int componentId,
                                    @RequestBody @Valid RatingDto ratingDto){
+        log.info("PUT /components/{}/ratings", componentId);
         return new RatingDto(componentRatingService
                 .update(componentId, ratingDto.getPilotId(), ratingDto.getScore(), ratingDto.getComment()));
     }
@@ -85,6 +90,7 @@ public class ComponentRatingController {
     @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable(value = "componentId") int componentId,
                        @PathVariable(value = "pilotId") int pilotId){
+        log.info("DELETE /components/{}/ratings/{}", componentId, pilotId);
         componentRatingService.delete(componentId, pilotId);
     }
 
@@ -98,7 +104,7 @@ public class ComponentRatingController {
     @PatchMapping
     public RatingDto updateWithPatch(@PathVariable(value = "componentId") int componentId,
                        @RequestBody @Valid RatingDto ratingDto){
-
+        log.info("PATCH /components/{}/ratings", componentId);
         Optional<Integer> score = Optional.ofNullable(ratingDto.getScore());
         Optional<String> comment = Optional.ofNullable(ratingDto.getComment());
 
@@ -117,6 +123,7 @@ public class ComponentRatingController {
     public void createManyRatingsForOneComponent(@PathVariable(value = "componentId") int componentId,
                                       @RequestParam(value = "score") int score,
                                       @RequestBody List<Integer> pilots) {
+        log.info("POST /components/{}/ratings/batch", componentId);
         componentRatingService.rateMany(componentId, score, pilots);
     }
 }
