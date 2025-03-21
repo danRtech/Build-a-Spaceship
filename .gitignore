@@ -39,3 +39,6 @@ mvnw.cmd
 
 ### MacOS system files ###
 .DS_Store
+
+### Logging ###
+logs/
