@@ -1,6 +1,7 @@
 package org.danRtech.spaceshipdata.service;
 
 import jakarta.validation.ConstraintViolationException;
+import lombok.extern.slf4j.Slf4j;
 import org.danRtech.spaceshipdata.model.entity.ComponentRating;
 import org.danRtech.spaceshipdata.model.entity.SpaceshipComponent;
 import org.danRtech.spaceshipdata.repository.ComponentRatingRepo;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
+@Slf4j
 @Service
 @Transactional
 public class ComponentRatingService {
@@ -33,6 +35,8 @@ public class ComponentRatingService {
      * @return the new rating.
      */
     public ComponentRating createNew(int componentId, Integer pilotId, Integer score, String comment){
+        log.info("About to create rating for component {} with pilot {}, score {} and comment {}.",
+                componentId, pilotId, score, comment);
         ComponentRating componentRating = new ComponentRating(verifyComponent(componentId), pilotId, score, comment);
         return componentRatingRepo.save(componentRating);
     }
@@ -44,6 +48,7 @@ public class ComponentRatingService {
      * @return ComponentRating
      */
     public Optional<ComponentRating> lookupRatingById(int id) {
+        log.info("About to lookup rating by id {}.", id);
         return componentRatingRepo.findById(id);
     }
 
@@ -53,6 +58,7 @@ public class ComponentRatingService {
      * @return List of ComponentRatings
      */
     public List<ComponentRating> lookupAll() {
+        log.info("About to lookup all ratings across all components.");
         return componentRatingRepo.findAll();
     }
 
@@ -64,6 +70,7 @@ public class ComponentRatingService {
      * @throws NoSuchElementException if no ratings found for the spaceship component.
      */
     public List<ComponentRating> lookupRatingsByComponent(int componentId) throws NoSuchElementException {
+        log.info("About to lookup all ratings for the component {}", componentId);
         return componentRatingRepo.findByComponentId(verifyComponent(componentId).getId());
     }
 
@@ -79,6 +86,8 @@ public class ComponentRatingService {
      */
     public ComponentRating update(int componentId, Integer pilotId, Integer score, String comment)
             throws NoSuchElementException {
+        log.info("About to update all elements of the component {} rating: pilot {}, score {}, comment {}.",
+                componentId, pilotId, score, comment);
         ComponentRating rating = verifyComponentRating(componentId, pilotId);
         rating.setScore(score);
         rating.setComment(comment);
@@ -97,6 +106,8 @@ public class ComponentRatingService {
      */
     public ComponentRating updateSome(int componentId, Integer pilotId, Optional<Integer> score, Optional<String> comment)
             throws NoSuchElementException {
+        log.info("About to optionally update elements of the component {} rating: pilot {}, score {}, comment {}.",
+                componentId, pilotId, score, comment);
         ComponentRating rating = verifyComponentRating(componentId, pilotId);
         score.ifPresent(s ->rating.setScore(s));
         comment.ifPresent(c -> rating.setComment(c));
@@ -111,6 +122,7 @@ public class ComponentRatingService {
      * @throws NoSuchElementException if no spaceship component found.
      */
     public void delete(int componentId, Integer pilotId) throws NoSuchElementException {
+        log.info("About to delete the rating from component {} that was left by pilot {}", componentId, pilotId);
         ComponentRating rating = verifyComponentRating(componentId, pilotId);
         componentRatingRepo.delete(rating);
     }
@@ -123,6 +135,7 @@ public class ComponentRatingService {
      * @throws NoSuchElementException if no ratings found for the component.
      */
     public Double getAverageScore(int componentId) throws NoSuchElementException {
+        log.info("About to calculate the average rating score for component {}", componentId);
         List<ComponentRating> ratings = componentRatingRepo.findByComponentId(verifyComponent(componentId).getId());
 
         // A traditional Java 7 approach:
@@ -151,6 +164,7 @@ public class ComponentRatingService {
      * @param pilotIDs the list of IDs for the group of pilots.
      */
     public void rateMany(int componentId, int score, List<Integer> pilotIDs){
+        log.info("About to rate the component {} by multiple pilots {} with the score {}", componentId, pilotIDs, score);
         SpaceshipComponent component = verifyComponent(componentId);
         for(Integer pilotID : pilotIDs){
             if(componentRatingRepo.findByComponentIdAndPilotId(componentId, pilotID).isPresent()){
