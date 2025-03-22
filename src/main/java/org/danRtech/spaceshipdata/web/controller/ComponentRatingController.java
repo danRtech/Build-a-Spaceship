@@ -1,5 +1,7 @@
 package org.danRtech.spaceshipdata.web.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.danRtech.spaceshipdata.model.entity.ComponentRating;
@@ -12,8 +14,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
-@Slf4j
 @RestController
+@Slf4j
+@Tag(name = "Spaceship Component Rating API", description = "The API provides operations on spaceship components' ratings.")
 @RequestMapping(path = "/component/{componentId}/ratings")
 public class ComponentRatingController {
     private ComponentRatingService componentRatingService;
@@ -29,6 +32,7 @@ public class ComponentRatingController {
      * @param ratingDto the rating details returned as RatingDto object.
      */
     @PostMapping
+    @Operation(summary = "Creates a rating for the Spaceship Component")
     @ResponseStatus(HttpStatus.CREATED)
     public void createComponentRating(
             @PathVariable (value = "componentId") int componentId, @RequestBody @Valid RatingDto ratingDto){
@@ -43,6 +47,7 @@ public class ComponentRatingController {
      * @return List of all ratings for the spaceship component as RatingDto objects.
      */
     @GetMapping
+    @Operation(summary = "Returns a rating for the Spaceship Component")
     public List<RatingDto> getAllRatingsForComponent(@PathVariable(value = "componentId") int componentId){
         log.info("GET /components/{}/ratings", componentId);
         List<ComponentRating> componentRatings = componentRatingService.lookupRatingsByComponent(componentId);
@@ -60,6 +65,7 @@ public class ComponentRatingController {
      * @return the average rating as ScoreDto object.
      */
     @GetMapping("/average")
+    @Operation(summary = "Returns average rating score for the Spaceship Component")
     public ScoreDto getAverageScore(@PathVariable(value = "componentId") int componentId){
         log.info("GET /components/{}/ratings/average", componentId);
        return new ScoreDto(componentRatingService.getAverageScore(componentId));
@@ -73,6 +79,7 @@ public class ComponentRatingController {
      * @return updated rating details as RatingDto object.
      */
     @PutMapping
+    @Operation(summary = "Updates the rating for the Spaceship Component")
     public RatingDto updateWithPut(@PathVariable(value = "componentId") int componentId,
                                    @RequestBody @Valid RatingDto ratingDto){
         log.info("PUT /components/{}/ratings", componentId);
@@ -87,6 +94,7 @@ public class ComponentRatingController {
      * @param pilotId identification of the spaceship pilot that left the rating which is being deleted now.
      */
     @DeleteMapping("/{pilotId}")
+    @Operation(summary = "Deletes the rating for the Spaceship Component")
     @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable(value = "componentId") int componentId,
                        @PathVariable(value = "pilotId") int pilotId){
@@ -102,6 +110,7 @@ public class ComponentRatingController {
      * @return updated rating details as RatingDto.
      */
     @PatchMapping
+    @Operation(summary = "Updates some details of the Spaceship Component's rating")
     public RatingDto updateWithPatch(@PathVariable(value = "componentId") int componentId,
                        @RequestBody @Valid RatingDto ratingDto){
         log.info("PATCH /components/{}/ratings", componentId);
@@ -119,6 +128,7 @@ public class ComponentRatingController {
      * @param pilots the pilots that rated the component.
      */
     @PostMapping("/batch")
+    @Operation(summary = "Lets a group of pilots to rate the Spaceship Component")
     @ResponseStatus(HttpStatus.CREATED)
     public void createManyRatingsForOneComponent(@PathVariable(value = "componentId") int componentId,
                                       @RequestParam(value = "score") int score,
