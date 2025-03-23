@@ -40,6 +40,7 @@ public class SpaceshipComponent {
     private SpaceshipType spaceshipType;
 
     @Column
+    @Enumerated(EnumType.STRING)
     private SpaceshipSize spaceshipSize;
 
     public SpaceshipComponent(String title, String description, Integer price,
