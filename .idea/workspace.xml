@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="242f6a17-1338-482a-97ee-50cd1c13095b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/spaceship-data/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/spaceship-data/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/spaceship-data/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/spaceship-data/compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spaceship-data/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/danRtech/spaceshipdata/SpaceshipDataApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/spaceship-data/src/main/java/org/danRtech/spaceshipdata/SpaceshipDataApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/danRtech/spaceshipdata/model/entity/ComponentRating.java" beforeDir="false" afterPath="$PROJECT_DIR$/spaceship-data/src/main/java/org/danRtech/spaceshipdata/model/entity/ComponentRating.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/danRtech/spaceshipdata/model/entity/Spaceship.java" beforeDir="false" afterPath="$PROJECT_DIR$/spaceship-data/src/main/java/org/danRtech/spaceshipdata/model/entity/Spaceship.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/danRtech/spaceshipdata/model/entity/SpaceshipComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/spaceship-data/src/main/java/org/danRtech/spaceshipdata/model/entity/SpaceshipComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/danRtech/spaceshipdata/model/enums/SpaceshipSize.java" beforeDir="false" afterPath="$PROJECT_DIR$/spaceship-data/src/main/java/org/danRtech/spaceshipdata/model/enums/SpaceshipSize.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/danRtech/spaceshipdata/model/enums/SpaceshipType.java" beforeDir="false" afterPath="$PROJECT_DIR$/spaceship-data/src/main/java/org/danRtech/spaceshipdata/model/enums/SpaceshipType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/danRtech/spaceshipdata/repository/ComponentRatingRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/spaceship-data/src/main/java/org/danRtech/spaceshipdata/repository/ComponentRatingRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/danRtech/spaceshipdata/repository/SpaceshipComponentRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/spaceship-data/src/main/java/org/danRtech/spaceshipdata/repository/SpaceshipComponentRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/danRtech/spaceshipdata/repository/SpaceshipRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/spaceship-data/src/main/java/org/danRtech/spaceshipdata/repository/SpaceshipRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/danRtech/spaceshipdata/service/ComponentRatingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spaceship-data/src/main/java/org/danRtech/spaceshipdata/service/ComponentRatingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/danRtech/spaceshipdata/service/SpaceshipComponentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spaceship-data/src/main/java/org/danRtech/spaceshipdata/service/SpaceshipComponentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/danRtech/spaceshipdata/service/SpaceshipService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spaceship-data/src/main/java/org/danRtech/spaceshipdata/service/SpaceshipService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/danRtech/spaceshipdata/web/controller/ComponentRatingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/spaceship-data/src/main/java/org/danRtech/spaceshipdata/web/controller/ComponentRatingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/danRtech/spaceshipdata/web/controller_advise/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/spaceship-data/src/main/java/org/danRtech/spaceshipdata/web/controller_advise/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/danRtech/spaceshipdata/web/dto/RatingDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/spaceship-data/src/main/java/org/danRtech/spaceshipdata/web/dto/RatingDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/danRtech/spaceshipdata/web/dto/ScoreDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/spaceship-data/src/main/java/org/danRtech/spaceshipdata/web/dto/ScoreDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/jib/SpaceshipComponents.json" beforeDir="false" afterPath="$PROJECT_DIR$/spaceship-data/src/main/jib/SpaceshipComponents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/spaceship-data/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1.1__CreateComponentSchema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/spaceship-data/src/main/resources/db/migration/V1.1__CreateComponentSchema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1.2__AddComponents.sql" beforeDir="false" afterPath="$PROJECT_DIR$/spaceship-data/src/main/resources/db/migration/V1.2__AddComponents.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1.3__CreateComponentRatingSchema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/spaceship-data/src/main/resources/db/migration/V1.3__CreateComponentRatingSchema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1.4__AddComponentRatings.sql" beforeDir="false" afterPath="$PROJECT_DIR$/spaceship-data/src/main/resources/db/migration/V1.4__AddComponentRatings.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spaceship-data/src/main/resources/logback.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/danRtech/spaceshipdata/SpaceshipDataApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spaceship-data/src/test/java/org/danRtech/spaceshipdata/SpaceshipDataApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/danRtech/spaceshipdata/service/ComponentRatingServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/spaceship-data/src/test/java/org/danRtech/spaceshipdata/service/ComponentRatingServiceTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="package-info" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2tzp6j0EkgbUSZDsfsgXn26QdZ8" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.SpaceshipDataApplication.executor": "Run",
+    "JUnit.ComponentRatingControllerTest.executor": "Run",
+    "JUnit.ComponentRatingServiceTest.executor": "Run",
+    "JUnit.SpaceshipDataApplicationTests.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "danRtech-macbook-dev",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/danilrusakov/IdeaProjects/SpaceShip_Microservicers/build-a-spaceship",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/jib" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/spaceship-data" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.SpaceshipDataApplication">
+    <configuration name="SpaceshipDataApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.danRtech.spaceshipdata.SpaceshipDataApplication" />
+      <module name="build-a-spaceship" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.danRtech.spaceshipdata.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ComponentRatingControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="build-a-spaceship" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.danRtech.spaceshipdata.web.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.danRtech.spaceshipdata.web.controller" />
+      <option name="MAIN_CLASS_NAME" value="org.danRtech.spaceshipdata.web.controller.ComponentRatingControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ComponentRatingServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="build-a-spaceship" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.danRtech.spaceshipdata.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.danRtech.spaceshipdata.service" />
+      <option name="MAIN_CLASS_NAME" value="org.danRtech.spaceshipdata.service.ComponentRatingServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpaceshipDataApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="build-a-spaceship" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.danRtech.spaceshipdata.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.danRtech.spaceshipdata" />
+      <option name="MAIN_CLASS_NAME" value="org.danRtech.spaceshipdata.SpaceshipDataApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="build-a-spaceship" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="build-a-spaceship" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.SpaceshipDataApplication" />
+        <item itemvalue="JUnit.ComponentRatingServiceTest" />
+        <item itemvalue="JUnit.SpaceshipDataApplicationTests" />
+        <item itemvalue="JUnit.ComponentRatingControllerTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="242f6a17-1338-482a-97ee-50cd1c13095b" name="Changes" comment="" />
+      <created>1741364583319</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1741364583319</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-core" />
+    <option featureType="dependencySupport" implementationName="executable:docker" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.validation:jakarta.validation-api" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.persistence:jakarta.persistence-api" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.data:spring-data-commons" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
+    <option featureType="dependencySupport" implementationName="java:org.projectlombok:lombok" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint type="java-exception">
+          <properties class="java.lang.IllegalStateException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

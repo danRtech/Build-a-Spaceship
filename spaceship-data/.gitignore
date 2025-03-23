@@ -1,6 +1,6 @@
 HELP.md
 target/
-!.mvn/wrapper/maven-wrapper.jar
+!spaceship-data/.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
@@ -14,7 +14,7 @@ target/
 .sts4-cache
 
 ### IntelliJ IDEA ###
-.idea
+spaceship-data/.idea
 *.iws
 *.iml
 *.ipr
@@ -33,7 +33,7 @@ build/
 .vscode/
 
 ### Maven Wrapper Files ###
-.mvn/
+spaceship-data/.mvn/
 mvnw
 mvnw.cmd
 
@@ -41,4 +41,4 @@ mvnw.cmd
 .DS_Store
 
 ### Logging ###
-logs/
+spaceship-data/logs/
