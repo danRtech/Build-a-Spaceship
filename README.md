@@ -1,6 +1,4 @@
-# NOTE: the project is Work-in-Progress
-
-# 📌 Build a Spaceship (with Spring Boot Microservices)
+# 📌 Build a Spaceship with Spring Boot Microservices
 > Welcome to the Spring Boot 3 Microservices Project! This repository is a hands-on implementation of microservices using Spring Boot 3, along with several other essential technologies for modern backend development.
 
 
