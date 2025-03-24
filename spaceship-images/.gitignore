@@ -1,6 +1,6 @@
 HELP.md
 target/
-!.mvn/wrapper/maven-wrapper.jar
+!spaceship-data/.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
@@ -14,7 +14,7 @@ target/
 .sts4-cache
 
 ### IntelliJ IDEA ###
-.idea
+spaceship-data/.idea
 *.iws
 *.iml
 *.ipr
@@ -31,3 +31,14 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Maven Wrapper Files ###
+spaceship-data/.mvn/
+mvnw
+mvnw.cmd
+
+### MacOS system files ###
+.DS_Store
+
+### Logging ###
+logs/
