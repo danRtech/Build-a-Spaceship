@@ -1,7 +1,9 @@
 package org.danRtech.spaceshipdata.model.entity;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * Represents a rating and review given to a specific spaceship component.
@@ -10,6 +12,7 @@ import lombok.Data;
  */
 @Entity
 @Data
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "component_rating")
 public class ComponentRating {
     @Id
@@ -28,9 +31,6 @@ public class ComponentRating {
 
     @Column
     private String comment;
-
-    protected ComponentRating() {
-    }
 
     /**
      * Create fully initialised spaceship component rating
