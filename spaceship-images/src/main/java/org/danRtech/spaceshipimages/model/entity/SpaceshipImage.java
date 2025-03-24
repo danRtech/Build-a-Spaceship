@@ -1,4 +1,4 @@
-package org.danRtech.spaceshipimages.model;
+package org.danRtech.spaceshipimages.model.entity;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;

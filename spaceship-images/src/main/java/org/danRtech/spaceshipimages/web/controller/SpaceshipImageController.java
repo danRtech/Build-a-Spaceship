@@ -4,8 +4,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 
-import org.danRtech.spaceshipimages.model.IdName;
-import org.danRtech.spaceshipimages.model.SpaceshipImage;
+import org.danRtech.spaceshipimages.model.projection.IdName;
+import org.danRtech.spaceshipimages.model.entity.SpaceshipImage;
 import org.danRtech.spaceshipimages.service.SpaceshipImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

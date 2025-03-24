@@ -1,8 +1,8 @@
 package org.danRtech.spaceshipimages.service;
 
 import lombok.NoArgsConstructor;
-import org.danRtech.spaceshipimages.model.IdName;
-import org.danRtech.spaceshipimages.model.SpaceshipImage;
+import org.danRtech.spaceshipimages.model.projection.IdName;
+import org.danRtech.spaceshipimages.model.entity.SpaceshipImage;
 import org.danRtech.spaceshipimages.repository.SpaceshipImageRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
