@@ -1,0 +1,18 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: components-route
+          uri: http://localhost:8082
+          predicates:
+            - Path=/spaceshipComponents/**
+        - id: spaceships-route
+          uri: http://localhost:8082
+          predicates:
+            - Path=/spaceships/**
+        - id: spaceship-image-route
+          uri: http://localhost:8081
+          predicates:
+            - Path=/images/**
+          filters:
+            - PrefixPath=/api

@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>org.danRtech</groupId>
 	<artifactId>spaceship-gateway</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>3.0.0</version>
 	<name>spaceship-gateway</name>
 	<description>Gateway routing for Build-a-Spaceship web app</description>
 	<url/>
@@ -35,7 +35,6 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-gateway</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
