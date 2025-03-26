@@ -26,6 +26,6 @@ Since all the required dependencies are added into pom.xml, just do the followin
 
 - Copy the project as ZIP from this GitHub repository into your machine.
 - Unzip it and open with IntelliJ IDEA (or your favourite IDE).
-- Find the SpaceshipDataApplication.java class at the root of "spaceship-data" component and run its main() method.
+- Find the SpaceshipDataApplication.java class at the root of "spaceship-core" component and run its main() method.
 - Verify the project is up and running and there are no errors in the console.
 - Open Swagger in your favourite browser (http://localhost:8080/swagger-ui/) and examine the RESTful API Endpoints.
