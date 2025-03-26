@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.danRtech</groupId>
-	<artifactId>spaceship-data</artifactId>
+	<artifactId>spaceship-core</artifactId>
 	<version>3.0.0</version>
-	<name>spaceship-data</name>
+	<name>spaceship-core</name>
 	<description>Spaceship Core Microservice - MySQL</description>
 	<url/>
 	<licenses>
