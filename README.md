@@ -3,15 +3,23 @@
 
 
 ## 📦 Tech Stack
-- ✅ Spring Boot 3 - The core framework for building microservices.
-- ✅ Spring Data & Spring Data REST - Simplified data access and RESTful APIs.
-- ✅ Spring MVC - Model-View-Controller architecture for handling web requests.
-- ✅ JUnit & Mockito - Unit testing to ensure robust application functionality.
-- ✅ SpringBootTest - Integration testing of Spring Boot applications.
-- ✅ Docker - Containerization for easy deployment and scalability.
-- ✅ MongoDB - NoSQL database integration.
-- ✅ Spring Security - Authentication and authorization for securing microservices.
-- ✅ Spring Cloud - Tools for building distributed and scalable microservices.
+- ✅ Spring Boot 3
+- ✅ Spring Data JPA
+- ✅ Spring Data REST
+- ✅ Spring MVC
+- ✅ Spring Boot DTO Validation
+- ✅ JUnit & Mockito
+- ✅ Docker Compose
+- ✅ Jib
+- ✅ MySQL
+- ✅ MongoDB
+- ✅ H2
+- ✅ Flyway
+- ✅ Lombok
+- ✅ Swagger
+- ✅ Spring Security
+- ✅ Spring Cloud Gateway (Reactive)
+- ✅ Maven
 
 ## ⚡ Quick Start
 ### Prerequisites
@@ -19,7 +27,6 @@ Make sure you have the following installed on your local machine:
 - Java 17+ (Recommended for Spring Boot 3)
 - Maven 3+ (For dependency management)
 - Docker (For containerized deployment)
-- MongoDB (If using locally)
 
 ### Run the project
 Since all the required dependencies are added into pom.xml, just do the following:
