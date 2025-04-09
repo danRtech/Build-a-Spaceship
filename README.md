@@ -7,8 +7,8 @@
 - ✅ Spring Data JPA
 - ✅ Spring Data REST
 - ✅ Spring MVC
+- ✅ Spring Cloud Gateway (Reactive)
 - ✅ Spring Boot DTO Validation
-- ✅ JUnit & Mockito
 - ✅ Docker Compose
 - ✅ Jib
 - ✅ MySQL
@@ -18,7 +18,8 @@
 - ✅ Lombok
 - ✅ Swagger
 - ✅ Spring Security
-- ✅ Spring Cloud Gateway (Reactive)
+- ✅ JUnit & Mockito
+- ✅ Logback
 - ✅ Maven
 
 ### Prerequisites
